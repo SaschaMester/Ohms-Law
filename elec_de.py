@@ -11,7 +11,7 @@ def clear(): # Bildschirm löschen
   system("clear")
 
 def ende(): # Programm beenden
-  end_antwort = input("Wirklich beenden? (J/N)")
+  end_antwort = input("Wirklich beenden? (J/N) ")
   if end_antwort == "j" or end_antwort == "J":
     quit
   else:

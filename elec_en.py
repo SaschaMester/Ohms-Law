@@ -1,6 +1,9 @@
 #! /usr/bin/python3 
 from os import * # Used for clear screen
 
+def wait():
+  system("sleep 3")
+
 def error():
   print("ERROR! The program would divide by 0, this is not possible")
 
@@ -8,15 +11,18 @@ def clear(): # Clear screen
   system("clear")
 
 def end(): # Finish
-  quit
+  end_answer = input("Do you really want to quit? (Y/N) ")
+  if end_answer == "y" or end_answer == "Y":
+    quit
+  else:
+    main()
+
 
 def cont(): # Ask if the user wants another calculation
-  cont_answer = input("Do you want to continue? (Y/N)")
+  cont_answer = input("Do you want to continue? (Y/N) ")
   if cont_answer == "Y" or cont_answer == "y":
-    clear()
     main()
   else:
-    clear()
     end()
 
 def voltage(): # Calculate voltage
@@ -49,6 +55,7 @@ def current(): # Calculate current
     cont()
 
 def main(): # Main menu
+  clear()
   print("1. Calculate voltage (Ohm's Law)")
   print("2. Calculate current (Ohm's Law)")
   print("3. Calculate resistance (Ohm's Law)")
@@ -74,6 +81,8 @@ def main(): # Main menu
 
   elif choice <1 or choice > 5: # Invalid Choice
     print ("Only numbers 1 - 5 allowed")
+    print ("The program will continue in 3 seconds")
+    wait()
     main()
 
 main()

@@ -1,6 +1,8 @@
 #! /usr/bin/python3 
 from os import * # Wird benötigt für die Bildschirmlöschfunktion
 
+def wait():
+  system("sleep 3")
 
 def fehler(): # Fehlermeldung bei Division durch 0
   print("FEHLER! Es würde eine Division durch 0 passieren, dies jedoch ist nicht möglich")
@@ -9,15 +11,18 @@ def clear(): # Bildschirm löschen
   system("clear")
 
 def ende(): # Programm beenden
-  quit
+  end_antwort = input("Wirklich beenden? (J/N)")
+  if end_antwort == "j" or end_antwort == "J":
+    quit
+  else:
+    main()
+
 
 def fortsetzen(): # Fragen, ob weitere Berechnung durchgeführt werden soll
   cont = input("Weitere Rechnung durchführen? (J/N) ")
   if cont == "j" or cont == "J":
-    clear()
     main()
   else:
-    clear()
     ende()
 
 def spannung(): # Spannungswert berechnen
@@ -50,6 +55,8 @@ def ampere(): # Stromstärke berechnen
     fortsetzen()
 
 def main(): # Hauptmenü
+  auswahl = 1
+  clear()
   print("1. Spannung berechnen (Ohmsches Gesetz)")
   print( "2. Stromstärke berechnen (Ohmsches Gesetz)")
   print( "3. Widerstand berechnen (Ohmsches Gesetz)")
@@ -74,7 +81,9 @@ def main(): # Hauptmenü
     clear()
 
   elif auswahl <1 or auswahl  > 5: # Was passiert bei Eingabe von ungültigen Werten? 
-    print ("Bitte nur Zahlen von 1 - 5")
+    print("Bitte nur Zahlen von 1 - 5 eingeben.")
+    print("Programm setzt in 3 Sekunden fort")
+    wait()
     main()
 
 main()

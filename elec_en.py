@@ -1,23 +1,23 @@
 #! /usr/bin/python3 
 
-def ende():
+def end():
   quit
 
-def spannung():
+def voltage():
   r = int(input("Enter resistance value: "))
   i = int(input("Enter current: "))
   u = r * i
   print ("The voltage value is {} Volts" . format(u))
   main()
 
-def widerstand():
+def resistance():
   u = int(input("Enter voltage value: "))
   i = int(input("Enter current: "))
   r = u / i
   print("The resistance value is  {} Ohms" . format(r))
   main()
 
-def ampere():
+def current():
   u = int(input("Enter voltage value: "))
   r = int(input("Enter resistance value: "))
   i = u / r
@@ -32,21 +32,21 @@ def main():
   auswahl = int(input("Your Choice: "))
 
   if auswahl == 1:
-    spannung()
+    voltage()
 
   elif auswahl == 2:
-    ampere()
+    current()
 
   elif auswahl == 3:
-    widerstand()
+    resistance()
 
   elif auswahl == 4:
-    ende()
+    end()
   elif auswahl > 4:
-    print ("Bitte nur Zahlen von 1 - 4")
+    print ("Only numbers 1 - 4 allowed")
     main()
   else:
-    print("FEHLER! Programm wird abgebrochen")
+    print("ERROR! Program will cancel")
     quit
 
 main()

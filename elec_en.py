@@ -24,9 +24,10 @@ def resistance(): # Calculate resistance
   if i == 0: # Avoid divide by zero 
     error()
     resistance()
-  r = u / i
-  print("The resistance value is  {} Ohms" . format(r))
-  main()
+  else:
+    r = u / i
+    print("The resistance value is  {} Ohms" . format(r))
+    main()
 
 def current(): # Calculate current
   u = float(input("Enter voltage value: "))
@@ -34,9 +35,10 @@ def current(): # Calculate current
   if r == 0: # Avoid divide by zero
     error()
     current()
-  i = u / r
-  print("The current is {} amps" . format(i))
-  main()
+  else:
+    i = u / r
+    print("The current is {} amps" . format(i))
+    main()
 
 def main(): # Main menu
   print("1. Calculate voltage (Ohm's Law)")

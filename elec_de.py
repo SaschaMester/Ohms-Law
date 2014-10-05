@@ -24,9 +24,10 @@ def widerstand(): # Widerstandswert berechnen
   if i == 0: # Division durch 0 verhindern
     fehler()
     widerstand()
-  r = u / i
-  print("Der Widerstandswert beträgt {} Ohm" . format(r))
-  main()
+  else:
+    r = u / i
+    print("Der Widerstandswert beträgt {} Ohm" . format(r))
+    main()
 
 def ampere(): # Stromstärke berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
@@ -34,9 +35,10 @@ def ampere(): # Stromstärke berechnen
   if r == 0: # Division durch 0 verhindern
     fehler()
     ampere()
-  i = u / r
-  print("Die Stromstärke beträgt {} Ampère" . format(i))
-  main()
+  else:
+    i = u / r
+    print("Die Stromstärke beträgt {} Ampère" . format(i))
+    main()
 
 def main(): # Hauptmenü
   print("1. Spannung berechnen (Ohmsches Gesetz)")

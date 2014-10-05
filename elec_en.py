@@ -60,7 +60,6 @@ def main(): # Main menu
   print("2. Calculate current (Ohm's Law)")
   print("3. Calculate resistance (Ohm's Law)")
   print("4. Quit")
-  print("5. Clear Screen")
   choice = int(input("Your Choice: "))
 
   # Links the numbers to the calculating functions 
@@ -76,11 +75,8 @@ def main(): # Main menu
   elif choice == 4:
     end()
 
-  elif choice == 5:
-    clear()
-
-  elif choice <1 or choice > 5: # Invalid Choice
-    print ("Only numbers 1 - 5 allowed")
+  elif choice <1 or choice > 4: # Invalid Choice
+    print ("Only numbers 1 - 4 allowed")
     print ("The program will continue in 3 seconds")
     wait()
     main()

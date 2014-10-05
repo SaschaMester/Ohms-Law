@@ -61,7 +61,6 @@ def main(): # Hauptmenü
   print( "2. Stromstärke berechnen (Ohmsches Gesetz)")
   print( "3. Widerstand berechnen (Ohmsches Gesetz)")
   print( "4. Programm beenden")
-  print( "5. Bildschirm löschen")
   auswahl = int(input("Ihre Auswahl: "))
 
   # Eingabe auswerten
@@ -77,11 +76,8 @@ def main(): # Hauptmenü
   elif auswahl == 4:
     ende()
 
-  elif auswahl == 5:
-    clear()
-
-  elif auswahl <1 or auswahl  > 5: # Was passiert bei Eingabe von ungültigen Werten? 
-    print("Bitte nur Zahlen von 1 - 5 eingeben.")
+  elif auswahl <1 or auswahl  > 4: # Was passiert bei Eingabe von ungültigen Werten? 
+    print("Bitte nur Zahlen von 1 - 4 eingeben.")
     print("Programm setzt in 3 Sekunden fort")
     wait()
     main()

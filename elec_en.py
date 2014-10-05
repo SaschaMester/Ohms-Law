@@ -29,25 +29,22 @@ def main():
   print("2. Calculate current (Ohm's Law)")
   print("3. Calculate resistance (Ohm's Law)")
   print("4. Quit")
-  auswahl = int(input("Your Choice: "))
+  choice = int(input("Your Choice: "))
 
-  if auswahl == 1:
+  if choice == 1:
     voltage()
 
-  elif auswahl == 2:
+  elif choice == 2:
     current()
 
-  elif auswahl == 3:
+  elif choice == 3:
     resistance()
 
-  elif auswahl == 4:
+  elif choice == 4:
     end()
-  elif auswahl > 4:
+  elif choice <1 or choice > 4:
     print ("Only numbers 1 - 4 allowed")
     main()
-  else:
-    print("ERROR! Program will cancel")
-    quit
 
 main()
 

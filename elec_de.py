@@ -42,12 +42,9 @@ def main():
 
   elif auswahl == 4:
     ende()
-  elif auswahl > 4:
+  elif auswahl <1 or auswahl  > 4:
     print ("Bitte nur Zahlen von 1 - 4")
     main()
-  else:
-    print("FEHLER! Programm wird abgebrochen")
-    quit
 
 main()
 

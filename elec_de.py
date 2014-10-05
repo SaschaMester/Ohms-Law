@@ -1,22 +1,31 @@
 #! /usr/bin/python3 
 from os import * # Wird benötigt für die Bildschirmlöschfunktion
 
+
 def fehler(): # Fehlermeldung bei Division durch 0
   print("FEHLER! Es würde eine Division durch 0 passieren, dies jedoch ist nicht möglich")
 
 def clear(): # Bildschirm löschen
   system("clear")
-  main()
 
 def ende(): # Programm beenden
   quit
+
+def fortsetzen(): # Fragen, ob weitere Berechnung durchgeführt werden soll
+  cont = input("Weitere Rechnung durchführen? (J/N) ")
+  if cont == "j" or cont == "J":
+    clear()
+    main()
+  else:
+    clear()
+    ende()
 
 def spannung(): # Spannungswert berechnen
   r = float(input("Bitte Widerstandswert eingeben: "))
   i = float(input("Bitte Stromstärke eingeben: "))
   u = r * i
   print ("Der Spannungswert beträgt {} Volt" . format(u))
-  main()
+  fortsetzen()
 
 def widerstand(): # Widerstandswert berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
@@ -27,7 +36,7 @@ def widerstand(): # Widerstandswert berechnen
   else:
     r = u / i
     print("Der Widerstandswert beträgt {} Ohm" . format(r))
-    main()
+    fortsetzen()
 
 def ampere(): # Stromstärke berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
@@ -38,7 +47,7 @@ def ampere(): # Stromstärke berechnen
   else:
     i = u / r
     print("Die Stromstärke beträgt {} Ampère" . format(i))
-    main()
+    fortsetzen()
 
 def main(): # Hauptmenü
   print("1. Spannung berechnen (Ohmsches Gesetz)")

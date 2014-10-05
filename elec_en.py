@@ -6,17 +6,25 @@ def error():
 
 def clear(): # Clear screen
   system("clear")
-  main()
 
 def end(): # Finish
   quit
+
+def cont(): # Ask if the user wants another calculation
+  cont_answer = input("Do you want to continue? (Y/N)")
+  if cont_answer == "Y" or cont_answer == "y":
+    clear()
+    main()
+  else:
+    clear()
+    end()
 
 def voltage(): # Calculate voltage
   r = float(input("Enter resistance value: "))
   i = float(input("Enter current: "))
   u = r * i
   print ("The voltage value is {} Volts" . format(u))
-  main()
+  cont()
 
 def resistance(): # Calculate resistance
   u = float(input("Enter voltage value: "))
@@ -27,7 +35,7 @@ def resistance(): # Calculate resistance
   else:
     r = u / i
     print("The resistance value is  {} Ohms" . format(r))
-    main()
+    cont()
 
 def current(): # Calculate current
   u = float(input("Enter voltage value: "))
@@ -38,7 +46,7 @@ def current(): # Calculate current
   else:
     i = u / r
     print("The current is {} amps" . format(i))
-    main()
+    cont()
 
 def main(): # Main menu
   print("1. Calculate voltage (Ohm's Law)")

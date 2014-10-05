@@ -1,4 +1,9 @@
 #! /usr/bin/python3 
+from os import *
+
+def clear():
+  system("clear")
+  main()
 
 def end():
   quit
@@ -29,6 +34,7 @@ def main():
   print("2. Calculate current (Ohm's Law)")
   print("3. Calculate resistance (Ohm's Law)")
   print("4. Quit")
+  print("5. Clear Screen")
   choice = int(input("Your Choice: "))
 
   if choice == 1:
@@ -42,8 +48,12 @@ def main():
 
   elif choice == 4:
     end()
-  elif choice <1 or choice > 4:
-    print ("Only numbers 1 - 4 allowed")
+
+  elif choice == 5:
+    clear()
+
+  elif choice <1 or choice > 5:
+    print ("Only numbers 1 - 5 allowed")
     main()
 
 main()

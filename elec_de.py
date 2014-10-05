@@ -1,4 +1,9 @@
 #! /usr/bin/python3 
+from os import *
+
+def clear():
+  system("clear")
+  main()
 
 def ende():
   quit
@@ -29,6 +34,7 @@ def main():
   print( "2. Stromstärke berechnen (Ohmsches Gesetz)")
   print( "3. Widerstand berechnen (Ohmsches Gesetz)")
   print( "4. Programm beenden")
+  print( "5. Bildschirm löschen")
   auswahl = int(input("Ihre Auswahl: "))
 
   if auswahl == 1:
@@ -42,8 +48,12 @@ def main():
 
   elif auswahl == 4:
     ende()
-  elif auswahl <1 or auswahl  > 4:
-    print ("Bitte nur Zahlen von 1 - 4")
+
+  elif auswahl == 5:
+    clear()
+
+  elif auswahl <1 or auswahl  > 5:
+    print ("Bitte nur Zahlen von 1 - 5")
     main()
 
 main()

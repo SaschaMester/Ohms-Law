@@ -9,22 +9,22 @@ def ende():
   quit
 
 def spannung():
-  r = int(input("Bitte Widerstandswert eingeben: "))
-  i = int(input("Bitte Stromstärke eingeben: "))
+  r = float(input("Bitte Widerstandswert eingeben: "))
+  i = float(input("Bitte Stromstärke eingeben: "))
   u = r * i
   print ("Der Spannungswert beträgt {} Volt" . format(u))
   main()
 
 def widerstand():
-  u = int(input("Bitte Spannungswert eingeben: "))
-  i = int(input("Bitte Stromstärke eingeben: "))
+  u = float(input("Bitte Spannungswert eingeben: "))
+  i = float(input("Bitte Stromstärke eingeben: "))
   r = u / i
   print("Der Widerstandswert beträgt {} Ohm" . format(r))
   main()
 
 def ampere():
-  u = int(input("Bitte Spannungswert eingeben: "))
-  r = int(input("Bitte Widerstandswert eigeben: "))
+  u = float(input("Bitte Spannungswert eingeben: "))
+  r = float(input("Bitte Widerstandswert eigeben: "))
   i = u / r
   print("Die Stromstärke beträgt {} Ampère" . format(i))
   main()

@@ -1,6 +1,9 @@
 #! /usr/bin/python3 
 from os import * # Wird benötigt für die Bildschirmlöschfunktion
 
+def fehler(): # Fehlermeldung bei Division durch 0
+  print("FEHLER! Es würde eine Division durch 0 passieren, dies jedoch ist nicht möglich")
+
 def clear(): # Bildschirm löschen
   system("clear")
   main()
@@ -18,6 +21,9 @@ def spannung(): # Spannungswert berechnen
 def widerstand(): # Widerstandswert berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
   i = float(input("Bitte Stromstärke eingeben: "))
+  if i == 0: # Division durch 0 verhindern
+    fehler()
+    widerstand()
   r = u / i
   print("Der Widerstandswert beträgt {} Ohm" . format(r))
   main()
@@ -25,6 +31,9 @@ def widerstand(): # Widerstandswert berechnen
 def ampere(): # Stromstärke berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
   r = float(input("Bitte Widerstandswert eigeben: "))
+  if r == 0: # Division durch 0 verhindern
+    fehler()
+    ampere()
   i = u / r
   print("Die Stromstärke beträgt {} Ampère" . format(i))
   main()

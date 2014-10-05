@@ -1,6 +1,9 @@
 #! /usr/bin/python3 
 from os import * # Used for clear screen
 
+def error():
+  print("ERROR! The program would divide by 0, this is not possible")
+
 def clear(): # Clear screen
   system("clear")
   main()
@@ -18,6 +21,9 @@ def voltage(): # Calculate voltage
 def resistance(): # Calculate resistance
   u = float(input("Enter voltage value: "))
   i = float(input("Enter current: "))
+  if i == 0: # Avoid divide by zero 
+    error()
+    resistance()
   r = u / i
   print("The resistance value is  {} Ohms" . format(r))
   main()
@@ -25,6 +31,9 @@ def resistance(): # Calculate resistance
 def current(): # Calculate current
   u = float(input("Enter voltage value: "))
   r = float(input("Enter resistance value: "))
+  if r == 0: # Avoid divide by zero
+    error()
+    current()
   i = u / r
   print("The current is {} amps" . format(i))
   main()

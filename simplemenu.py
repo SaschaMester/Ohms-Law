@@ -1,7 +1,7 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 
 #
-#  Copyright (C) 2014  Sascha Mester
+#  Copyright (C) 2012  Christian Hausknecht
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,9 +16,6 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#
-#  Menu by Christian Hausknecht, the original source code of
-#  Christian Hausknecht's "simplemenu" is included
 
 """
     ~~~~~~~~~~~~~
@@ -48,85 +45,20 @@
     .. moduleauthor:: Christian Hausknecht <christian.hausknecht@gmx.de>
 """
 
+import sys
 
 #
 # Some little demo functions that does not have any sensefull functionality.
 # We just need something that "does" something
 #
 
-from os import *
-import string
-import sys
+def foo():
+    print("Bin in 'foo'")
 
-def lizenz():
-  print("########################################")
-  print("############### Ohms-Law ###############")
-  print("########################################")
-  print()
-  print("########################################")
-  print("# (c) 2014 by Sascha Mester            #")
-  print("# This program is free software.       #")
-  print("# You can freely redistribute it       #")
-  print("# under the terms of the               #")
-  print("# GNU General Public License,          #")
-  print("# version 3 or ( at your opinion)      #")
-  print("# any later version, published by      #")
-  print("# the Free Software Foundation.        #")
-  print("########################################")
-  print("# This program is published in the     #")
-  print("# hope that it will be useful,         #")
-  print("# but WITHOUT ANY WARRANTY, without    #")
-  print("# even the implied warranty of         #")
-  print("# MERCHANDIBILITY of FITNESS FOR A     #")
-  print("# PARTICULAR PURPOSE. See the          #")
-  print("# GNU GENERAL PUBLIC LICENSE for       #")
-  print("# more details.                        #")
-  print("########################################")
-  print("# In 6 Sekunden geht's weiter          #")
-  print("########################################")
-  print("# Das Menü ist das \"simplemenu\" von  #")
-  print("# Christian Hausknecht. Der Original-  #")
-  print("# Quellcode hierfür liegt dem          #")
-  print("# Git-Repo bei                         #")
-  print("########################################")
-  
-  wait(6)
-  main()
-
-def wait(N):
-  system("sleep {}" . format(N)) 
-
-def fehler(): # Fehlermeldung bei Division durch 0
-  print("FEHLER! Es würde eine Division durch 0 passieren, dies jedoch ist nicht möglich")
-
-def clear(): # Bildschirm löschen
-  system("clear")
-
-def spannung(): # Spannungswert berechnen
-  r = float(input("Bitte Widerstandswert eingeben: "))
-  i = float(input("Bitte Stromstärke eingeben: "))
-  u = r * i
-  print ("Der Spannungswert beträgt {} Volt" . format(u))
-
-def widerstand(): # Widerstandswert berechnen
-  u = float(input("Bitte Spannungswert eingeben: "))
-  i = float(input("Bitte Stromstärke eingeben: "))
-  if i == 0: # Division durch 0 verhindern
-    fehler()
-    widerstand()
-  else:
-    r = u / i
-    print("Der Widerstandswert beträgt {} Ohm" . format(r))
-
-def ampere(): # Stromstärke berechnen
-  u = float(input("Bitte Spannungswert eingeben: "))
-  r = float(input("Bitte Widerstandswert eigeben: "))
-  if r == 0: # Division durch 0 verhindern
-    fehler()
-    ampere()
-  else:
-    i = u / r
-    print("Die Stromstärke beträgt {} Ampère" . format(i))
+    
+def bar(): 
+    print("Bin in 'bar'")
+    
 
 #
 # Core functions of our simple menu system
@@ -182,11 +114,13 @@ def handle_menu(menu):
 def main():
     # just some demonstration menu structure:
     menu = (
-        ("Spannung berechnen(Ohmsches Gesetz)", spannung),
-        ("Stromstärke berechnen (Ohmsches Gesetz)", ampere),
-        ("Widerstand berechnen (Ohmsches Gesetz)", widerstand),
-        ("Lizenzinformation", lizenz),
-        ("Beenden", lambda: sys.exit(0))
+        ("Foo", foo),
+        ("Bar", bar),
+        # here is some 'magic'. As `sys.exit` takes one parameter and our
+        # 'normal' functions do not, we create an anonymous function using
+        # the `lambda` keyword. If you do not understand this yet, just take
+        # it for granted.
+        ("Exit", lambda: sys.exit(0))
     )
     
     # run the menu-"handler" :-)

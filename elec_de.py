@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from os import * # Wird benötigt für die Bildschirmlöschfunktion
+import string
 
 def wait():
   system("sleep 3")
@@ -14,8 +15,12 @@ def clear(): # Bildschirm löschen
 
 def ende(): # Programm beenden
   end_antwort = input("Wirklich beenden? (J/N) ")
-  if end_antwort == "n" or end_antwort == "N":
-    main()
+  if len(end_antwort) == 1:
+    if end_antwort == "n" or end_antwort == "N":
+      main()
+  else:
+    print ( "Bitte nur ein Buchstabe!" )
+    ende()
 
 
 
@@ -65,6 +70,7 @@ def main(): # Hauptmenü
   auswahl = int(input("Ihre Auswahl: "))
 
   # Eingabe auswerten
+  
   if auswahl == 1:
     spannung()
 

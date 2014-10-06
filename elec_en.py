@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from os import * # Used for clear screen
+import string
 
 def wait():
   system("sleep 3")
@@ -14,6 +15,9 @@ def clear(): # Clear screen
 
 def end(): # Finish
   end_answer = input("Do you really want to quit? (Y/N) ")
+  if len(end_answer) != 1:
+    print("Only ONE letter!") 
+    end()
   if end_answer == "n" or end_answer == "N":
     main()
 

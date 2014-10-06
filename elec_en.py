@@ -12,10 +12,9 @@ def clear(): # Clear screen
 
 def end(): # Finish
   end_answer = input("Do you really want to quit? (Y/N) ")
-  if end_answer == "y" or end_answer == "Y":
-    quit
-  else:
+  if end_answer == "n" or end_answer == "N":
     main()
+
 
 
 def cont(): # Ask if the user wants another calculation

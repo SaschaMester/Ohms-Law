@@ -12,10 +12,9 @@ def clear(): # Bildschirm löschen
 
 def ende(): # Programm beenden
   end_antwort = input("Wirklich beenden? (J/N) ")
-  if end_antwort == "j" or end_antwort == "J":
-    quit
-  else:
+  if end_antwort == "n" or end_antwort == "N":
     main()
+
 
 
 def fortsetzen(): # Fragen, ob weitere Berechnung durchgeführt werden soll

@@ -54,12 +54,11 @@ def lizenz():
   print("########################################")
   print("# In 6 Sekunden geht's weiter          #")
   print("########################################")
-  wait()
-  wait()
+  wait(6)
   main()
 
-def wait():
-  system("sleep 3") # Wartezeiten sind hier zu ändern
+def wait(N):
+  system("sleep {}" . format(N)) 
 
 def fehler(): # Fehlermeldung bei Division durch 0
   print("FEHLER! Es würde eine Division durch 0 passieren, dies jedoch ist nicht möglich")
@@ -147,8 +146,7 @@ def main(): # Hauptmenü
   elif auswahl <1 or auswahl  > 4: # Was passiert bei Eingabe von ungültigen Werten? 
     print("Bitte nur Zahlen von 1 - 4 eingeben.")
     print("Programm setzt in 3 Sekunden fort") 
-    # Die Wartezeit ist in der Methode wait() zu ändern
-    wait()
+    wait(3)
     main()
 
 main()

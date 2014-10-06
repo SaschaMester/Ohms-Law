@@ -54,12 +54,11 @@ def ourLicense():
   print("########################################")
   print("# Program continues within 6 seconds   #")
   print("########################################")
-  wait()
-  wait()
+  wait(6)
   main()
 
-def wait():
-  system("sleep 3")
+def wait(N):
+  system("sleep {}" . format(N))
 
 def error():
   print("ERROR! The program would divide by 0, this is not possible")
@@ -144,7 +143,7 @@ def main(): # Main menu
   elif choice <1 or choice > 5: # Invalid Choice
     print ("Only numbers 1 - 5 allowed")
     print ("The program will continue in 3 seconds") # You can change this value in wait() method
-    wait()
+    wait(3)
     main()
 
 main()

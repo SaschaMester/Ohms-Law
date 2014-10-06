@@ -1,62 +1,32 @@
-#!/usr/bin/python3
+#! /usr/bin/python3 
+# -*- coding: utf-8 -*-
 
-#
-#  Copyright (C) 2014  Sascha Mester
-#
-#  This program is free software: you can redistribute it and/or modify
-#  it under the terms of the GNU General Public License as published by
-#  the Free Software Foundation, either version 3 of the License, or
-#  (at your option) any later version.
-#
-#  This program is distributed in the hope that it will be useful,
-#  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#  GNU General Public License for more details.
-#
-#  You should have received a copy of the GNU General Public License
-#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-#  Menu by Christian Hausknecht, the original source code of
-#  Christian Hausknecht's "simplemenu" is included
+########################################
+############### Ohms-Law ###############
+########################################
 
-"""
-    ~~~~~~~~~~~~~
-    simplemenu.py
-    ~~~~~~~~~~~~~
+########################################
+# (c) 2014 by Sascha Mester            #
+# This program is free software.       #
+# You can freely redistribute it       #
+# under the terms of the               #
+# GNU General Public License,          #
+# version 3 or ( at your opinion)      #
+# any later version, published by      #
+# the Free Software Foundation.        #
+########################################
+# This program is published in the     #
+# hope that it will be useful,         #
+# but WITHOUT ANY WARRANTY, without    #
+# even the implied warranty of         #
+# MERCHANDIBILITY of FITNESS FOR A     #
+# PARTICULAR PURPOSE. See the          #
+# GNU GENERAL PUBLIC LICENSE for       #
+# more details.                        #
+########################################
 
-    Very simple approach to implement a generic, but easy to use menu system
-    with basic Python data types.
-    
-    Each menu consists of this tuple (or list) structure:
-    
-        (
-            ("text to be shown", <function object>),
-            ("another item text", <another function object>),
-            (..., ...),
-            ...
-        )
-        
-    To be more generic, each 'callable' can be used as second argument.
-    
-    The user can choose via an computed index, which action should be
-    triggered by the core function `handle_menu`.
-
-    This is esspecially written for beginners, so there is no magic like
-    `functools.partial` or some closures to create demo functions.
-
-    .. moduleauthor:: Christian Hausknecht <christian.hausknecht@gmx.de>
-"""
-
-
-#
-# Some little demo functions that does not have any sensefull functionality.
-# We just need something that "does" something
-#
-
-from os import *
+from os import * # Wird benötigt für die Bildschirmlöschfunktion
 import string
-import sys
 
 def lizenz():
   print("########################################")
@@ -84,12 +54,6 @@ def lizenz():
   print("########################################")
   print("# In 6 Sekunden geht's weiter          #")
   print("########################################")
-  print("# Das Menü ist das \"simplemenu\" von  #")
-  print("# Christian Hausknecht. Der Original-  #")
-  print("# Quellcode hierfür liegt dem          #")
-  print("# Git-Repo bei                         #")
-  print("########################################")
-  
   wait(6)
   main()
 
@@ -102,11 +66,33 @@ def fehler(): # Fehlermeldung bei Division durch 0
 def clear(): # Bildschirm löschen
   system("clear")
 
+def ende(): # Programm beenden
+  end_antwort = input("Wirklich beenden? (J/N) ")
+  if len(end_antwort) == 1:
+    if end_antwort == "n" or end_antwort == "N":
+      main()
+  else:
+    print ( "Bitte nur ein Buchstabe!" )
+    ende()
+
+
+
+def fortsetzen(): # Fragen, ob weitere Berechnung durchgeführt werden soll
+  cont = input("Weitere Rechnung durchführen? (J/N) ")
+  if len(cont) != 1:
+    print("Bitte nur EIN Buchstabe!")
+    fortsetzen()
+  elif cont == "j" or cont == "J":
+    main()
+  else:
+    ende()
+
 def spannung(): # Spannungswert berechnen
   r = float(input("Bitte Widerstandswert eingeben: "))
   i = float(input("Bitte Stromstärke eingeben: "))
   u = r * i
   print ("Der Spannungswert beträgt {} Volt" . format(u))
+  fortsetzen()
 
 def widerstand(): # Widerstandswert berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
@@ -117,6 +103,7 @@ def widerstand(): # Widerstandswert berechnen
   else:
     r = u / i
     print("Der Widerstandswert beträgt {} Ohm" . format(r))
+    fortsetzen()
 
 def ampere(): # Stromstärke berechnen
   u = float(input("Bitte Spannungswert eingeben: "))
@@ -127,71 +114,40 @@ def ampere(): # Stromstärke berechnen
   else:
     i = u / r
     print("Die Stromstärke beträgt {} Ampère" . format(i))
+    fortsetzen()
 
-#
-# Core functions of our simple menu system
-#
-    
-def print_menu(menu):
-    """
-    Function that prints our menu items. It adds an numeric index to each
-    item in order to make that the choosebale index for the user.
-    
-    :param menu: tuple with menu definition
-    """
-    for index, item in enumerate(menu, 1):
-        print("{}  {}".format(index, item[0]))
+def main(): # Hauptmenü
+  auswahl = 1
+  clear()
+  print( "1. Spannung berechnen (Ohmsches Gesetz)")
+  print( "2. Stromstärke berechnen (Ohmsches Gesetz)")
+  print( "3. Widerstand berechnen (Ohmsches Gesetz)")
+  print( "4. Programm beenden")
+  print( "5. Lizenzinformation")
+  auswahl = int(input("Ihre Auswahl: "))
 
-        
-def get_user_input(menu):
-    """
-    This function implements a simple user input with validation. As the
-    input data should match with existing menu items, we check, if the value
-    is valid.
+  # Eingabe auswerten
+  
+  if auswahl == 1:
+    spannung()
 
-    :param menu: tuple with menu definition
-    
-    :returns: int
-    """
-    while True:
-        try:
-            choice = int(input("Ihre Wahl?: ")) - 1
-            if 0 <= choice < len(menu):
-                return choice
-            else:
-                raise IndexError
-        except (ValueError, IndexError):
-            print("Bitte nur Zahlen aus dem Bereich 1 - {} eingeben".format(
-                                                                    len(menu)))
+  elif auswahl == 2:
+    ampere()
 
+  elif auswahl == 3:
+    widerstand()
 
-def handle_menu(menu):
-    """
-    Core function of our menu system. It handles the complete process of
-    printing the menu, getting the user input and calling the corresponding
-    function.
-    
-    :param menu: tuple with menu definition
-    """
-    while True:
-        print_menu(menu)
-        choice = get_user_input(menu)
-        menu[choice][1]()
+  elif auswahl == 4:
+    ende()
 
-    
-def main():
-    # just some demonstration menu structure:
-    menu = (
-        ("Spannung berechnen(Ohmsches Gesetz)", spannung),
-        ("Stromstärke berechnen (Ohmsches Gesetz)", ampere),
-        ("Widerstand berechnen (Ohmsches Gesetz)", widerstand),
-        ("Lizenzinformation", lizenz),
-        ("Beenden", lambda: sys.exit(0))
-    )
-    
-    # run the menu-"handler" :-)
-    handle_menu(menu)
+  elif auswahl == 5:
+    lizenz()
 
-
-if __name__ == "__main__":
+  elif auswahl <1 or auswahl  > 4: # Was passiert bei Eingabe von ungültigen Werten? 
+    print("Bitte nur Zahlen von 1 - 4 eingeben.")
+    print("Programm setzt in 3 Sekunden fort") 
+    wait(3)
     main()
+
+main()
+

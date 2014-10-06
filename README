@@ -28,5 +28,5 @@ You need Python 3 for using this program.
 Windows-users get it by visiting http://python.org , 
 most Linux distributions will have Python in their
 software repositories. 
-
+After installing just type python3 elec_<your language>.py 
 

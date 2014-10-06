@@ -28,6 +28,36 @@
 from os import * # Wird benötigt für die Bildschirmlöschfunktion
 import string
 
+def lizenz():
+  print("########################################")
+  print("############### Ohms-Law ###############")
+  print("########################################")
+  print()
+  print("########################################")
+  print("# (c) 2014 by Sascha Mester            #")
+  print("# This program is free software.       #")
+  print("# You can freely redistribute it       #")
+  print("# under the terms of the               #")
+  print("# GNU General Public License,          #")
+  print("# version 3 or ( at your opinion)      #")
+  print("# any later version, published by      #")
+  print("# the Free Software Foundation.        #")
+  print("########################################")
+  print("# This program is published in the     #")
+  print("# hope that it will be useful,         #")
+  print("# but WITHOUT ANY WARRANTY, without    #")
+  print("# even the implied warranty of         #")
+  print("# MERCHANDIBILITY of FITNESS FOR A     #")
+  print("# PARTICULAR PURPOSE. See the          #")
+  print("# GNU GENERAL PUBLIC LICENSE for       #")
+  print("# more details.                        #")
+  print("########################################")
+  print("# In 6 Sekunden geht's weiter          #")
+  print("########################################")
+  wait()
+  wait()
+  main()
+
 def wait():
   system("sleep 3") # Wartezeiten sind hier zu ändern
 
@@ -90,10 +120,11 @@ def ampere(): # Stromstärke berechnen
 def main(): # Hauptmenü
   auswahl = 1
   clear()
-  print("1. Spannung berechnen (Ohmsches Gesetz)")
+  print( "1. Spannung berechnen (Ohmsches Gesetz)")
   print( "2. Stromstärke berechnen (Ohmsches Gesetz)")
   print( "3. Widerstand berechnen (Ohmsches Gesetz)")
   print( "4. Programm beenden")
+  print( "5. Lizenzinformation")
   auswahl = int(input("Ihre Auswahl: "))
 
   # Eingabe auswerten
@@ -109,6 +140,9 @@ def main(): # Hauptmenü
 
   elif auswahl == 4:
     ende()
+
+  elif auswahl == 5:
+    lizenz()
 
   elif auswahl <1 or auswahl  > 4: # Was passiert bei Eingabe von ungültigen Werten? 
     print("Bitte nur Zahlen von 1 - 4 eingeben.")

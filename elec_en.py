@@ -28,6 +28,36 @@
 from os import * # Used for clear screen
 import string
 
+def ourLicense():
+  print("########################################")
+  print("############### Ohms-Law ###############")
+  print("########################################")
+  print()
+  print("########################################")
+  print("# (c) 2014 by Sascha Mester            #")
+  print("# This program is free software.       #")
+  print("# You can freely redistribute it       #")
+  print("# under the terms of the               #")
+  print("# GNU General Public License,          #")
+  print("# version 3 or ( at your opinion)      #")
+  print("# any later version, published by      #")
+  print("# the Free Software Foundation.        #")
+  print("########################################")
+  print("# This program is published in the     #")
+  print("# hope that it will be useful,         #")
+  print("# but WITHOUT ANY WARRANTY, without    #")
+  print("# even the implied warranty of         #")
+  print("# MERCHANDIBILITY of FITNESS FOR A     #")
+  print("# PARTICULAR PURPOSE. See the          #")
+  print("# GNU GENERAL PUBLIC LICENSE for       #")
+  print("# more details.                        #")
+  print("########################################")
+  print("# Program continues within 6 seconds   #")
+  print("########################################")
+  wait()
+  wait()
+  main()
+
 def wait():
   system("sleep 3")
 
@@ -92,6 +122,7 @@ def main(): # Main menu
   print("2. Calculate current (Ohm's Law)")
   print("3. Calculate resistance (Ohm's Law)")
   print("4. Quit")
+  print("5. License Information")
   choice = int(input("Your Choice: "))
 
   # Links the numbers to the calculating functions 
@@ -107,8 +138,11 @@ def main(): # Main menu
   elif choice == 4:
     end()
 
-  elif choice <1 or choice > 4: # Invalid Choice
-    print ("Only numbers 1 - 4 allowed")
+  elif choice == 5:
+    ourLicense()
+
+  elif choice <1 or choice > 5: # Invalid Choice
+    print ("Only numbers 1 - 5 allowed")
     print ("The program will continue in 3 seconds") # You can change this value in wait() method
     wait()
     main()

@@ -85,7 +85,7 @@ def main(): # Main menu
 
   elif choice <1 or choice > 4: # Invalid Choice
     print ("Only numbers 1 - 4 allowed")
-    print ("The program will continue in 3 seconds")
+    print ("The program will continue in 3 seconds") # You can change this value in wait() method
     wait()
     main()
 

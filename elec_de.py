@@ -1,4 +1,6 @@
 #! /usr/bin/python3 
+# -*- coding: utf-8 -*-
+
 from os import * # Wird benötigt für die Bildschirmlöschfunktion
 
 def wait():

@@ -18,14 +18,17 @@ def end(): # Finish
   if len(end_answer) != 1:
     print("Only ONE letter!") 
     end()
-  if end_answer == "n" or end_answer == "N":
+  elif end_answer == "n" or end_answer == "N":
     main()
 
 
 
 def cont(): # Ask if the user wants another calculation
   cont_answer = input("Do you want to continue? (Y/N) ")
-  if cont_answer == "Y" or cont_answer == "y":
+  if len(cont_answer) != 1:
+    print("Only ONE letter!")
+    cont()
+  elif cont_answer == "Y" or cont_answer == "y":
     main()
   else:
     end()

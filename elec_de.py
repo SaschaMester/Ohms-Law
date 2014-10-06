@@ -26,7 +26,10 @@ def ende(): # Programm beenden
 
 def fortsetzen(): # Fragen, ob weitere Berechnung durchgeführt werden soll
   cont = input("Weitere Rechnung durchführen? (J/N) ")
-  if cont == "j" or cont == "J":
+  if len(cont) != 1:
+    print("Bitte nur EIN Buchstabe!")
+    fortsetzen()
+  elif cont == "j" or cont == "J":
     main()
   else:
     ende()

@@ -5,7 +5,7 @@ from os import * # Wird benötigt für die Bildschirmlöschfunktion
 import string
 
 def wait():
-  system("sleep 3")
+  system("sleep 3") # Wartezeiten sind hier zu ändern
 
 def fehler(): # Fehlermeldung bei Division durch 0
   print("FEHLER! Es würde eine Division durch 0 passieren, dies jedoch ist nicht möglich")
@@ -88,7 +88,8 @@ def main(): # Hauptmenü
 
   elif auswahl <1 or auswahl  > 4: # Was passiert bei Eingabe von ungültigen Werten? 
     print("Bitte nur Zahlen von 1 - 4 eingeben.")
-    print("Programm setzt in 3 Sekunden fort")
+    print("Programm setzt in 3 Sekunden fort") 
+    # Die Wartezeit ist in der Methode wait() zu ändern
     wait()
     main()
 
